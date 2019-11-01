@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>The relative bias in alternative measures of BBS annual indices of abundance</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">BBSIndices</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+<li>
+  <a href="license.html">License</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<!-- Add a small amount of space between sections. -->
+<style type="text/css">
+div.section {
+  padding-top: 12px;
+}
+</style>
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">The relative bias in alternative measures of BBS annual indices of abundance</h1>
+
+</div>
+
+
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span>
+</button>
+</p>
+<div id="workflowr-report" class="collapse">
+<ul class="nav nav-tabs">
+<li class="active">
+<a data-toggle="tab" href="#summary">Summary</a>
+</li>
+<li>
+<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> </a>
+</li>
+<li>
+<a data-toggle="tab" href="#versions">Past versions</a>
+</li>
+</ul>
+<div class="tab-content">
+<div id="summary" class="tab-pane fade in active">
+<p>
+<strong>Last updated:</strong> 2019-11-01
+</p>
+<p>
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 5 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 2
+</p>
+<p>
+<strong>Knit directory:</strong> <code>BBSIndices/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
+</p>
+<p>
+This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
+  href="https://github.com/jdblischak/workflowr">workflowr</a> (version 1.4.0). The <em>Checks</em> tab describes the reproducibility checks that were applied when the results were created. The <em>Past versions</em> tab lists the development history.
+</p>
+<hr>
+</div>
+<div id="checks" class="tab-pane fade">
+<div class="panel-group" id="workflowr-checks">
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
+</p>
+</div>
+<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
+</p>
+</div>
+<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! The global environment was empty. Objects defined in the global environment can affect the analysis in your R Markdown file in unknown ways. For reproduciblity it’s best to always run the code in an empty environment.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20191016code"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Seed:</strong> <code>set.seed(20191016)</code> </a>
+</p>
+</div>
+<div id="strongSeedstrongcodesetseed20191016code" class="panel-collapse collapse">
+<div class="panel-body">
+<p>The command <code>set.seed(20191016)</code> was run prior to running the code in the R Markdown file. Setting a seed ensures that any results that rely on randomness, e.g. subsampling or permutations, are reproducible.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Session information:</strong> recorded </a>
+</p>
+</div>
+<div id="strongSessioninformationstrongrecorded" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Recording the operating system, R version, and package versions is critical for reproducibility.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongdetected"> <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> <strong>Cache:</strong> detected </a>
+</p>
+</div>
+<div id="strongCachestrongdetected" class="panel-collapse collapse">
+<div class="panel-body">
+The following chunks had caches available:
+<ul>
+<li>
+unnamed-chunk-2
+</li>
+</ul>
+<p>To ensure reproducibility of the results, delete the cache directory <code>index_cache</code> and re-run the analysis. To have workflowr automatically delete the cache directory prior to building the file, set <code>delete_cache = TRUE</code> when running <code>wflow_build()</code> or <code>wflow_publish()</code>.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongabsolute"> <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> <strong>File paths:</strong> absolute </a>
+</p>
+</div>
+<div id="strongFilepathsstrongabsolute" class="panel-collapse collapse">
+<div class="panel-body">
+<p>
+Using absolute paths to the files within your workflowr project makes it difficult for you and others to run your code on a different machine. Change the absolute path(s) below to the suggested relative path(s) to make your code more reproducible.
+</p>
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th style="text-align:left;">
+absolute
+</th>
+<th style="text-align:left;">
+relative
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+C:/Users/smithac/Documents/BBSIndices/data/
+</td>
+<td style="text-align:left;">
+data
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+C:/Users/smithac/Documents/BBSIndices/analysis/index.rmd
+</td>
+<td style="text-align:left;">
+analysis/index.Rmd
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongab27179"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> ab27179 </a>
+</p>
+</div>
+<div id="strongRepositoryversionstrongab27179" class="panel-collapse collapse">
+<div class="panel-body">
+<p>
+Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
+</p>
+<pre><code>
+Ignored files:
+    Ignored:    .Rhistory
+    Ignored:    .Rproj.user/
+    Ignored:    analysis/index_cache/
+
+Untracked files:
+    Untracked:  Barn Swallow continental indices.pdf
+    Untracked:  Barn Swallowstrata indices.pdf
+    Untracked:  Barn Swallowtrend map.pdf
+    Untracked:  Chestnut-collared Longspur continental indices.pdf
+    Untracked:  Chestnut-collared Longspurstrata indices.pdf
+    Untracked:  Chestnut-collared Longspurtrend map.pdf
+    Untracked:  analysis/CCLO comparison.pdf
+    Untracked:  analysis/CCLO comparison.tex
+    Untracked:  analysis/CCLO_commparison.log
+    Untracked:  analysis/CCLO_commparison.tex
+    Untracked:  analysis/Rplots.pdf
+    Untracked:  analysis/bbsBayes analyses.R
+    Untracked:  analysis/index.log
+    Untracked:  analysis/index.tex
+    Untracked:  data/Barn Swallow jags_models.RData
+    Untracked:  data/Chestnut-collared Longspur jags_models.RData
+    Untracked:  data/slope oct 18.jags
+    Untracked:  data/slope sdprior.jags
+    Untracked:  data/slope.altn.jags
+    Untracked:  data/temp.RData
+    Untracked:  docs/figure/
+
+Unstaged changes:
+    Modified:   README.md
+
+</code></pre>
+<p>
+Note that any generated files, e.g. HTML, png, CSS, etc., are not included in this status report because it is ok for generated content to have uncommitted changes.
+</p>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div id="versions" class="tab-pane fade">
+
+<p>
+These are the previous versions of the R Markdown and HTML files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view them.
+</p>
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+File
+</th>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+<th>
+Message
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+ab27179
+</td>
+<td>
+AdamCSmithCWS
+</td>
+<td>
+2019-11-01
+</td>
+<td>
+Publish the initial files for myproject
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+bfe45b3
+</td>
+<td>
+Adam C Smith
+</td>
+<td>
+2019-10-17
+</td>
+<td>
+Start workflowr project.
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div id="alternative-measures-of-annual-indices" class="section level1">
+<h1>Alternative Measures of Annual Indices</h1>
+<p>Bill Link’s memo from October 15 outlines the differences in precision for two ways of estimating BBS annual indices. Here I’ll use real BBS data to demonstrate the differences in accuracy of the two approaches, i.e., that using A1 results in a systematic over-estimation of the mean observed counts. And, demonstrate that the biased estimates of precision in the annual indices from using the A2 approach (defined below) do not translate into biased estimates of precision in the trends.</p>
+<div id="estimating-the-annual-indices-using-a1-or-a2" class="section level2">
+<h2>Estimating the annual indices using A1 or A2</h2>
+<p>A1 is the standard BBS approach, with n calculated following Sauer and Link 2011, as the expected count from a new observer-route combination.</p>
+<p>A2 is the approach I (Adam Smith) have been using lately, with n calculated as the mean of the expected counts from existing observer-route combinations.</p>
+<p>I’ve run the standard BBS slope model on Chestnut-collared Longspur and calculated the annual indices using either A1 or A2. In this model the variance of the observer-route effects is a fixed effect estimated as a single value across the full survey (i.e., there is no parameter that estimates a stratum-specific observer-route variance).</p>
+</div>
+<div id="continental-annual-index-plots-for-each-approach" class="section level2">
+<h2>Continental Annual Index plots for each approach</h2>
+<p>These plots of the annual indices show the estimated annual indices from each model along with the observed mean counts for each year. It is relatively easy to see that there’s a difference in teh precision of the two estimates. But, importantly, there’s also a difference in the overall magnitude of the estimates. <img src="figure/index.Rmd/unnamed-chunk-2-1.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-2-2.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="a2-overestimates-precision" class="section level2">
+<h2>A2 overestimates precision</h2>
+<p>As Bill described in his note, the A2 approach does appear to overestimate the precision of the annual indices. For example, if we look at the coefficient of variation for the annual indices, the CV of A2 is always smaller than the CV of A1 <img src="figure/index.Rmd/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="but-the-magnitude-of-the-estimates-depends-on-the-approach-as-well" class="section level2">
+<h2>But the Magnitude of the estimates depends on the approach as well</h2>
+<p>The magnitude of the predicted indices is mportant so that:</p>
+<ul>
+<li>users of the annual indices understand the intuitive interpretation of their values. When users see annual indices that are far higher than they expect, the integrity of the survey suffers.</li>
+<li>the predictions accurately represent what they’re intended to represent (i.e., either the expected value of a new observer-route combination or the mean expected value for a new count on one of the existing observer-route combinations)</li>
+<li>the relative value of the predictions among strata reflect the “true” relative abundance of the species among strata</li>
+</ul>
+<div id="a1-tends-to-overestimate-the-magnitude-of-the-annual-indices-and-more-so-for-some-strata" class="section level3">
+<h3>A1 tends to overestimate the magnitude of the annual indices, and more so, for some strata</h3>
+<p>Although simplified, I’ve used the estimated posterior means as simple estimates of:</p>
+<ul>
+<li>the observer-route effects within each stratum (obs[strat,observer])</li>
+<li>the sd of the observer effects (sdobs)</li>
+<li>the predicted annual index (n[strat,year])</li>
+</ul>
+<p>I’ve also calculated the observed mean count in a given stratum and year for comparison</p>
+<p>If we commpare the differences between the modeled annual mean counts (A1 and A2) and the observed mean counts, this should provide a measure of:</p>
+<ul>
+<li>the accuracy of our predictions, on average across years and strata (how similar are the expected counts and the observed mean counts)</li>
+<li>the differences between the A1 and A2 approachs in the relative contribution of each region to the regional trends</li>
+</ul>
+<p>What we see is that both approaches tend to over-estimate the observed mean counts. However, the A2 approach, generates predicted values that are much more similar to the observed mean counts (i.e. the zero-line below).</p>
+<p><img src="figure/index.Rmd/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="the-differences-between-the-two-approaches-are-partly-a-function-of-the-relationship-between-the-overall-observer-route-variance-and-the-stratum-level-variance" class="section level3">
+<h3>The differences between the two approaches are partly a function of the relationship between the overall observer-route variance and the stratum-level variance</h3>
+<p>The relationship between the overall observer-route variance (observer variance used in the 0.5*variance retransformation factor of approach A1), and the stratum-level variance of the observer-route effects (variance of the observer-route effects in a given stratum) partly explains why the magnitude of the two sets of estimates differ. The difference between the observed variance of observer-route effects in a given stratum (sd(obs[stratum,1:nobserver[stratum]])) and the overall sdobs provides a measure of how well the sdobs parameter represents the sd of the observer-route effects in a given stratum.</p>
+<p>As you see below, this measure of the difference between the two estimates of observer-route variance is correlated with the difference between the mean predicted annual index from each model (average of the annual differences between model predictions).</p>
+<p><img src="figure/index.Rmd/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>This difference between the stratum-level observer variance and the overall observer variance is one of the reasons I suggested letting the observer variance vary among strata. Taking that approach has very similar effects on the index estimates as does using the A2 approach. I’ve more recently been using the A2 approach with an overall observer variance because it improves convergence for species and regions where the data are particularly sparse (i.e., avoids some situations where there is very little information available to estimate the variance of observer-route effects in a given stratum).</p>
+</div>
+</div>
+<div id="either-way-a1-or-a2-the-stratum-level-trends-are-the-same-but-the-continental-trends-are-not" class="section level2">
+<h2>Either way (A1 or A2), the stratum-level trends are the same, but the Continental trends are not!</h2>
+<p>Finally, we can look at the differences in the trends estimated by each approach, both at a stratum level and at the continental scale</p>
+<p>what we see is that the stratum level trends are effectively identical, both in their magnitude and in their uncertainty, but the continental estimates depend on the scaling (A1 vs A2). The continental trends vary because the relative magnitude of the annual indices in each stratum partly determine the stratum’s contribution to the continental trend. If the annual indices are more severly overestimated in a stratum with a different trend value, then that increases the stratum’s influence on the overall trend. For example, the continental trend from the A1 estimates is slightly less negative partly because of the much greater weight given to strata MT-11, CO-18, and ND-17 by the A1 calculation than is given by the A2 approach.</p>
+<p>Given that the A2 approach:</p>
+<ul>
+<li>better represents the magnitude of the observed mean counts (and presumably the true relative abundance of birds among strata)</li>
+<li>is more independent of the relationship between sdobs and the sd(obs[stratum,1:nobservers]),</li>
+</ul>
+<p>and, that the overestimate of precision in the indices from the A2 approach (which Bill L. demonstrated in his note from October 15) does not appear to translate into overestimates in the trend precision It seems to me that the A2 approach is preferable <img src="figure/index.Rmd/unnamed-chunk-9-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Below are the annual index plots for each stratum and method. Grey dots are the observed mean counts</p>
+<p><img src="figure/index.Rmd/unnamed-chunk-10-1.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-2.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-3.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-4.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-5.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-6.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-7.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-8.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-9.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-10.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-11.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-12.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-13.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-14.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-15.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-16.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-17.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-18.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-19.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-20.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-21.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-22.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-23.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-24.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-25.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-26.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-27.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-28.png" width="672" style="display: block; margin: auto;" /></p>
+<br>
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Session information
+</button>
+</p>
+<div id="workflowr-sessioninfo" class="collapse">
+<pre class="r"><code>sessionInfo()</code></pre>
+<pre><code>R version 3.6.1 (2019-07-05)
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+Running under: Windows 10 x64 (build 15063)
+
+Matrix products: default
+
+locale:
+[1] LC_COLLATE=English_Canada.1252  LC_CTYPE=English_Canada.1252   
+[3] LC_MONETARY=English_Canada.1252 LC_NUMERIC=C                   
+[5] LC_TIME=English_Canada.1252    
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+[1] ggrepel_0.8.1  dplyr_0.8.3    ggforce_0.3.1  ggplot2_3.2.1 
+[5] tidyr_1.0.0    bbsBayes_2.0.0
+
+loaded via a namespace (and not attached):
+ [1] progress_1.2.2    tidyselect_0.2.5  xfun_0.10        
+ [4] purrr_0.3.3       lattice_0.20-38   colorspace_1.4-1 
+ [7] vctrs_0.2.0       htmltools_0.4.0   yaml_2.2.0       
+[10] rlang_0.4.1       pillar_1.4.2      glue_1.3.1       
+[13] withr_2.1.2       tweenr_1.0.1      rappdirs_0.3.1   
+[16] sp_1.3-1          lifecycle_0.1.0   stringr_1.4.0    
+[19] munsell_0.5.0     gtable_0.3.0      workflowr_1.4.0  
+[22] coda_0.19-3       evaluate_0.14     labeling_0.3     
+[25] knitr_1.25        parallel_3.6.1    highr_0.8        
+[28] Rcpp_1.0.2        scales_1.0.0      backports_1.1.5  
+[31] farver_1.1.0      fs_1.3.1          rjags_4-9        
+[34] hms_0.5.1         digest_0.6.22     stringi_1.4.3    
+[37] polyclip_1.10-0   grid_3.6.1        rprojroot_1.3-2  
+[40] rgdal_1.4-6       jagsUI_1.5.1      tools_3.6.1      
+[43] magrittr_1.5      lazyeval_0.2.2    tibble_2.1.3     
+[46] crayon_1.3.4      whisker_0.4       pkgconfig_2.0.3  
+[49] zeallot_0.1.0     ellipsis_0.3.0    MASS_7.3-51.4    
+[52] prettyunits_1.0.2 assertthat_0.2.1  rmarkdown_1.16   
+[55] R6_2.4.0          git2r_0.26.1      compiler_3.6.1   </code></pre>
+</div>
+</div>
+</div>
+
+
+<!-- Adjust MathJax settings so that all math formulae are shown using
+TeX fonts only; see
+http://docs.mathjax.org/en/latest/configuration.html.  This will make
+the presentation more consistent at the cost of the webpage sometimes
+taking slightly longer to load. Note that this only works because the
+footer is added to webpages before the MathJax javascript. -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
