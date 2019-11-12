@@ -19,7 +19,9 @@ A1 is the standard BBS approach, with n calculated following Sauer and Link 2011
 A2 is the approach I (Adam Smith) have been using lately, with n calculated as the mean of the expected counts from existing observer-route combinations. 
 
 ```{r echo = F, message = F, warning = F}
-species = "Chestnut-collared Longspur"
+#species = "Chestnut-collared Longspur"
+species = "Wood Thrush"
+
 library(bbsBayes)
 library(tidyr)
 library(ggplot2)
@@ -27,6 +29,8 @@ library(ggforce)
 library(dplyr)
 library(ggrepel)
 load(paste0("C:/Users/smithac/Documents/BBSIndices/data/",species," jags_models.RData"))
+
+
 ```
 
 I've run the standard BBS slope model on `r paste(species)` and calculated the annual indices using either A1 or A2. In this model the variance of the observer-route effects is a fixed effect estimated as a single value across the full survey (i.e., there is no parameter that estimates a stratum-specific observer-route variance).
@@ -35,14 +39,14 @@ I've run the standard BBS slope model on `r paste(species)` and calculated the a
 ## Continental Annual Index plots for each approach
 These plots of the annual indices show the estimated annual indices from each model along with the observed mean counts for each year. It is relatively easy to see that there's a difference in teh precision of the two estimates. But, importantly, there's also a difference in the overall magnitude of the estimates.
 ```{r cache=F, message = F, fig.height= 5, fig.width=7, echo = F,warning = F}
-cont.1 = generate_cont_indices(mod.1)
-cont.2 = generate_cont_indices(mod.2)
+cont.1 = generate_cont_indices(mod,alternate_n = "n2")
+cont.2 = generate_cont_indices(mod)
 plot_cont_indices(cont.1,species = "A1",add_observed_means = T)
 plot_cont_indices(cont.2,species = "A2",add_observed_means = T)
 
 
-strat.1 = generate_strata_indices(mod.1)
-strat.2 = generate_strata_indices(mod.2)
+strat.1 = generate_strata_indices(mod,alternate_n = "n2")
+strat.2 = generate_strata_indices(mod)
 
 p1 = plot_strata_indices(strat.1,species = "A1",add_observed_means = T)
 p2 = plot_strata_indices(strat.2,species = "A2",add_observed_means = T)
@@ -64,10 +68,10 @@ obsmean[,"model"] = modname
 return(obsmean)
 }
 
-obs.1.mean = extr.obs.means(mod.1,modname = "A1")
+obs.1.mean = extr.obs.means(mod,modname = "A1")
 
 
-obs.2.mean = extr.obs.means(mod.2,modname = "A2")
+obs.2.mean = extr.obs.means(mod,modname = "A2")
 
 obs.mean = rbind(obs.1.mean,obs.2.mean)
 obs.mean = merge(obs.mean,strat.1$area_weights,by.x = "strat", by.y = "num")
@@ -101,7 +105,7 @@ obssdobs <- obs.mean %>%
   group_by(region) %>% 
   summarise(sd = sd(observer_route_mean))
 
-sdobs = mod.1$summary["sdobs",]
+sdobs = mod$summary["sdobs",]
 obssdobs$sddif = sdobs["mean"]-obssdobs$sd
 names(obssdobs)[1] = "Region"
 
@@ -141,8 +145,7 @@ print(cvp)
 ```
 
 
-## But the Magnitude of the estimates depends on the approach as well
-
+## But A1 overestimates abundance (magnitude)
 The magnitude of the predicted indices is mportant so that:
 
 * users of the annual indices understand the intuitive interpretation of their values. When users see annual indices that are far higher than they expect, the integrity of the survey suffers.
@@ -150,7 +153,7 @@ The magnitude of the predicted indices is mportant so that:
 * the relative value of the predictions among strata reflect the "true" relative abundance of the species among strata
 
 
-### A1 tends to overestimate the magnitude of the annual indices, and more so, for some strata
+### A1 overestimates the magnitude of the annual indices, and more so, for some strata
 Although simplified, I've used the estimated posterior means as simple estimates of:
 
 * the observer-route effects within each stratum (obs[strat,observer])
@@ -159,7 +162,7 @@ Although simplified, I've used the estimated posterior means as simple estimates
 
 I've also calculated the observed mean count in a given stratum and year for comparison
 
-If we commpare the differences between the modeled annual mean counts (A1 and A2) and the observed mean counts, this should provide a measure of:
+If we compare the differences between the modeled annual mean counts (A1 and A2) and the observed mean counts, this should provide a measure of:
 
 * the accuracy of our predictions, on average across years and strata (how similar are the expected counts and the observed mean counts)
 * the differences between the A1 and A2 approachs in the relative contribution of each region to the regional trends
@@ -193,7 +196,7 @@ difp = ggplot(data = compdif2,aes(y = dif_lindex_obs,x = sddif,group = model,col
   labs(x = "sdobs - sd(obs[stratum,1:nobserver[stratum]])",
        y = "Difference between predicted and observed mean counts",
        title = "A2 predicted values are closer to observed means")+
-  geom_label_repel(data = difdif,aes(x = sddif,y = A1,label = Region),size = 2,inherit.aes = F)+
+  #geom_label_repel(data = difdif,aes(x = sddif,y = A1,label = Region),size = 1,inherit.aes = F)+
   scale_y_continuous(limits = c(-3,3))
 print(difp)
 
@@ -201,7 +204,7 @@ print(difp)
 
 
 
-### The differences between the two approaches are partly a function of the relationship between the overall observer-route variance and the stratum-level variance
+### The differences between the two approaches are partly a function of the relationship between the overall observer-route variance and the stratum-level observer-route variance
 
 The relationship between the overall observer-route variance (observer variance used in the 0.5*variance retransformation factor of approach A1), and the stratum-level variance of the observer-route effects (variance of the observer-route effects in a given stratum) partly explains why the magnitude of the two sets of estimates differ. The difference between the observed variance of observer-route effects in a given stratum (sd(obs[stratum,1:nobserver[stratum]])) and the overall sdobs provides a measure of how well the sdobs parameter represents the sd of the observer-route effects in a given stratum.
 
@@ -219,15 +222,16 @@ difp = ggplot(data = compdif,aes(y = mean_dif_log,x = sddif))+
   labs(x = "sdobs - sd(obs[stratum,1:nobserver[stratum]])",
        y = "Mean log-scale annual diff (mean(log(A1)-log(A2)))",
        title = "Magnitude difference of annual indices by observer-route variance",
-       subtitle = "Little difference in strata where observer-route effects reflect the survey-wide pattern")+
-  geom_label_repel(aes(label = Region))
+       subtitle = "Little difference in strata where observer-route effects reflect the survey-wide pattern")
+  #geom_label_repel(aes(label = Region))
 print(difp)
 
 ```
 
 This difference between the stratum-level observer variance and the overall observer variance is one of the reasons I suggested letting the observer variance vary among strata. Taking that approach has very similar effects on the index estimates as does using the A2 approach. I've more recently been using the A2 approach with an overall observer variance because it improves convergence for species and regions where the data are particularly sparse (i.e., avoids some situations where there is very little information available to estimate the variance of observer-route effects in a given stratum).
 
-## Either way (A1 or A2), the stratum-level trends are the same, but the Continental trends are not!
+## Either way (A1 or A2), the stratum-level trends are the same, 
+## However, the Continental trends are different!
 
 Finally, we can look at the differences in the trends estimated by each approach, both at a stratum level and at the continental scale
 

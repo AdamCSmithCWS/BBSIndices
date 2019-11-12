@@ -1,5 +1,9 @@
 # BBSIndices
 
-A [workflowr][] project.
+Comparing alternative approaches to calculating annual indices of abundance from the BBS.
 
-[workflowr]: https://github.com/jdblischak/workflowr
+Using an example species, compare the accuracy and precision of annual indices of abundance, and stratum-level contribution to survey-wide trend estimates.
+
+
+
+

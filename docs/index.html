@@ -23,6 +23,8 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -282,7 +284,13 @@ $(document).ready(function () {
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/AdamCSmithCWS/BBSIndices">
+    <span class="fa fa-github"></span>
+     
+    Source code
+  </a>
+</li>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -327,7 +335,7 @@ div.section {
 <strong>Last updated:</strong> 2019-11-01
 </p>
 <p>
-<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 5 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 2
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 4 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 3
 </p>
 <p>
 <strong>Knit directory:</strong> <code>BBSIndices/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
@@ -343,12 +351,12 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges"> <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
+<div id="strongRMarkdownfilestronguncommittedchanges" class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of the R Markdown file created these results, you’ll want to first commit it to the Git repo. If you’re still working on the analysis, you can ignore this warning. When you’re finished, you can run <code>wflow_publish</code> to commit the R Markdown file and build the HTML.</p>
 </div>
 </div>
 </div>
@@ -453,10 +461,10 @@ analysis/index.Rmd
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongab27179"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> ab27179 </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomAdamCSmithCWSBBSIndicestree1f8f4c6df5517f5f9526be0ae34286db1bade796targetblank1f8f4c6a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/AdamCSmithCWS/BBSIndices/tree/1f8f4c6df5517f5f9526be0ae34286db1bade796" target="_blank">1f8f4c6</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongab27179" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomAdamCSmithCWSBBSIndicestree1f8f4c6df5517f5f9526be0ae34286db1bade796targetblank1f8f4c6a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility. The version displayed above was the version of the Git repository at the time these results were generated. <br><br> Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -484,13 +492,17 @@ Untracked files:
     Untracked:  analysis/index.tex
     Untracked:  data/Barn Swallow jags_models.RData
     Untracked:  data/Chestnut-collared Longspur jags_models.RData
+    Untracked:  data/Wood Thrush jags_models.RData
     Untracked:  data/slope oct 18.jags
     Untracked:  data/slope sdprior.jags
     Untracked:  data/slope.altn.jags
     Untracked:  data/temp.RData
-    Untracked:  docs/figure/
+    Untracked:  docs/figure/index_pdf.Rmd/
 
 Unstaged changes:
+    Modified:   analysis/index.Rmd
+
+Staged changes:
     Modified:   README.md
 
 </code></pre>
@@ -532,10 +544,27 @@ Message
 <tbody>
 <tr>
 <td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/AdamCSmithCWS/BBSIndices/30a0283777821133506d36a8302e69c82fe76eb5/docs/index.html" target="_blank">30a0283</a>
+</td>
+<td>
+AdamCSmithCWS
+</td>
+<td>
+2019-11-01
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
 Rmd
 </td>
 <td>
-ab27179
+<a href="https://github.com/AdamCSmithCWS/BBSIndices/blob/ab2717943405fae80f439ef56126eb7d30ff8b49/analysis/index.Rmd" target="_blank">ab27179</a>
 </td>
 <td>
 AdamCSmithCWS
@@ -552,7 +581,7 @@ Publish the initial files for myproject
 Rmd
 </td>
 <td>
-bfe45b3
+<a href="https://github.com/AdamCSmithCWS/BBSIndices/blob/bfe45b35ff1cefea40bfc4e68dc5bdfeeff739bb/analysis/index.Rmd" target="_blank">bfe45b3</a>
 </td>
 <td>
 Adam C Smith
@@ -578,15 +607,127 @@ Start workflowr project.
 <h2>Estimating the annual indices using A1 or A2</h2>
 <p>A1 is the standard BBS approach, with n calculated following Sauer and Link 2011, as the expected count from a new observer-route combination.</p>
 <p>A2 is the approach I (Adam Smith) have been using lately, with n calculated as the mean of the expected counts from existing observer-route combinations.</p>
-<p>I’ve run the standard BBS slope model on Chestnut-collared Longspur and calculated the annual indices using either A1 or A2. In this model the variance of the observer-route effects is a fixed effect estimated as a single value across the full survey (i.e., there is no parameter that estimates a stratum-specific observer-route variance).</p>
+<p>I’ve run the standard BBS slope model on Wood Thrush and calculated the annual indices using either A1 or A2. In this model the variance of the observer-route effects is a fixed effect estimated as a single value across the full survey (i.e., there is no parameter that estimates a stratum-specific observer-route variance).</p>
 </div>
 <div id="continental-annual-index-plots-for-each-approach" class="section level2">
 <h2>Continental Annual Index plots for each approach</h2>
-<p>These plots of the annual indices show the estimated annual indices from each model along with the observed mean counts for each year. It is relatively easy to see that there’s a difference in teh precision of the two estimates. But, importantly, there’s also a difference in the overall magnitude of the estimates. <img src="figure/index.Rmd/unnamed-chunk-2-1.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-2-2.png" width="672" style="display: block; margin: auto;" /></p>
+<p>These plots of the annual indices show the estimated annual indices from each model along with the observed mean counts for each year. It is relatively easy to see that there’s a difference in teh precision of the two estimates. But, importantly, there’s also a difference in the overall magnitude of the estimates. <img src="figure/index.Rmd/unnamed-chunk-2-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-2-1">
+Past versions of unnamed-chunk-2-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-2-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/AdamCSmithCWS/BBSIndices/blob/30a0283777821133506d36a8302e69c82fe76eb5/docs/figure/index.Rmd/unnamed-chunk-2-1.png" target="_blank">30a0283</a>
+</td>
+<td>
+AdamCSmithCWS
+</td>
+<td>
+2019-11-01
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><img src="figure/index.Rmd/unnamed-chunk-2-2.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-2-2">
+Past versions of unnamed-chunk-2-2.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-2-2" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/AdamCSmithCWS/BBSIndices/blob/30a0283777821133506d36a8302e69c82fe76eb5/docs/figure/index.Rmd/unnamed-chunk-2-2.png" target="_blank">30a0283</a>
+</td>
+<td>
+AdamCSmithCWS
+</td>
+<td>
+2019-11-01
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="a2-overestimates-precision" class="section level2">
 <h2>A2 overestimates precision</h2>
 <p>As Bill described in his note, the A2 approach does appear to overestimate the precision of the annual indices. For example, if we look at the coefficient of variation for the annual indices, the CV of A2 is always smaller than the CV of A1 <img src="figure/index.Rmd/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-4-1">
+Past versions of unnamed-chunk-4-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-4-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/AdamCSmithCWS/BBSIndices/blob/30a0283777821133506d36a8302e69c82fe76eb5/docs/figure/index.Rmd/unnamed-chunk-4-1.png" target="_blank">30a0283</a>
+</td>
+<td>
+AdamCSmithCWS
+</td>
+<td>
+2019-11-01
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="but-the-magnitude-of-the-estimates-depends-on-the-approach-as-well" class="section level2">
 <h2>But the Magnitude of the estimates depends on the approach as well</h2>
@@ -612,12 +753,86 @@ Start workflowr project.
 </ul>
 <p>What we see is that both approaches tend to over-estimate the observed mean counts. However, the A2 approach, generates predicted values that are much more similar to the observed mean counts (i.e. the zero-line below).</p>
 <p><img src="figure/index.Rmd/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-6-1">
+Past versions of unnamed-chunk-6-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-6-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/AdamCSmithCWS/BBSIndices/blob/30a0283777821133506d36a8302e69c82fe76eb5/docs/figure/index.Rmd/unnamed-chunk-6-1.png" target="_blank">30a0283</a>
+</td>
+<td>
+AdamCSmithCWS
+</td>
+<td>
+2019-11-01
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="the-differences-between-the-two-approaches-are-partly-a-function-of-the-relationship-between-the-overall-observer-route-variance-and-the-stratum-level-variance" class="section level3">
 <h3>The differences between the two approaches are partly a function of the relationship between the overall observer-route variance and the stratum-level variance</h3>
 <p>The relationship between the overall observer-route variance (observer variance used in the 0.5*variance retransformation factor of approach A1), and the stratum-level variance of the observer-route effects (variance of the observer-route effects in a given stratum) partly explains why the magnitude of the two sets of estimates differ. The difference between the observed variance of observer-route effects in a given stratum (sd(obs[stratum,1:nobserver[stratum]])) and the overall sdobs provides a measure of how well the sdobs parameter represents the sd of the observer-route effects in a given stratum.</p>
 <p>As you see below, this measure of the difference between the two estimates of observer-route variance is correlated with the difference between the mean predicted annual index from each model (average of the annual differences between model predictions).</p>
 <p><img src="figure/index.Rmd/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-7-1">
+Past versions of unnamed-chunk-7-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-7-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/AdamCSmithCWS/BBSIndices/blob/30a0283777821133506d36a8302e69c82fe76eb5/docs/figure/index.Rmd/unnamed-chunk-7-1.png" target="_blank">30a0283</a>
+</td>
+<td>
+AdamCSmithCWS
+</td>
+<td>
+2019-11-01
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>This difference between the stratum-level observer variance and the overall observer variance is one of the reasons I suggested letting the observer variance vary among strata. Taking that approach has very similar effects on the index estimates as does using the A2 approach. I’ve more recently been using the A2 approach with an overall observer variance because it improves convergence for species and regions where the data are particularly sparse (i.e., avoids some situations where there is very little information available to estimate the variance of observer-route effects in a given stratum).</p>
 </div>
 </div>
@@ -631,8 +846,1109 @@ Start workflowr project.
 <li>is more independent of the relationship between sdobs and the sd(obs[stratum,1:nobservers]),</li>
 </ul>
 <p>and, that the overestimate of precision in the indices from the A2 approach (which Bill L. demonstrated in his note from October 15) does not appear to translate into overestimates in the trend precision It seems to me that the A2 approach is preferable <img src="figure/index.Rmd/unnamed-chunk-9-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-9-1">
+Past versions of unnamed-chunk-9-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-9-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/AdamCSmithCWS/BBSIndices/blob/30a0283777821133506d36a8302e69c82fe76eb5/docs/figure/index.Rmd/unnamed-chunk-9-1.png" target="_blank">30a0283</a>
+</td>
+<td>
+AdamCSmithCWS
+</td>
+<td>
+2019-11-01
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>Below are the annual index plots for each stratum and method. Grey dots are the observed mean counts</p>
-<p><img src="figure/index.Rmd/unnamed-chunk-10-1.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-2.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-3.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-4.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-5.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-6.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-7.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-8.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-9.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-10.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-11.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-12.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-13.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-14.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-15.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-16.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-17.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-18.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-19.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-20.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-21.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-22.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-23.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-24.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-25.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-26.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-27.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-28.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/index.Rmd/unnamed-chunk-10-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-10-1">
+Past versions of unnamed-chunk-10-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-10-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/AdamCSmithCWS/BBSIndices/blob/30a0283777821133506d36a8302e69c82fe76eb5/docs/figure/index.Rmd/unnamed-chunk-10-1.png" target="_blank">30a0283</a>
+</td>
+<td>
+AdamCSmithCWS
+</td>
+<td>
+2019-11-01
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><img src="figure/index.Rmd/unnamed-chunk-10-2.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-10-2">
+Past versions of unnamed-chunk-10-2.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-10-2" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/AdamCSmithCWS/BBSIndices/blob/30a0283777821133506d36a8302e69c82fe76eb5/docs/figure/index.Rmd/unnamed-chunk-10-2.png" target="_blank">30a0283</a>
+</td>
+<td>
+AdamCSmithCWS
+</td>
+<td>
+2019-11-01
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><img src="figure/index.Rmd/unnamed-chunk-10-3.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-10-3">
+Past versions of unnamed-chunk-10-3.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-10-3" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/AdamCSmithCWS/BBSIndices/blob/30a0283777821133506d36a8302e69c82fe76eb5/docs/figure/index.Rmd/unnamed-chunk-10-3.png" target="_blank">30a0283</a>
+</td>
+<td>
+AdamCSmithCWS
+</td>
+<td>
+2019-11-01
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><img src="figure/index.Rmd/unnamed-chunk-10-4.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-10-4">
+Past versions of unnamed-chunk-10-4.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-10-4" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/AdamCSmithCWS/BBSIndices/blob/30a0283777821133506d36a8302e69c82fe76eb5/docs/figure/index.Rmd/unnamed-chunk-10-4.png" target="_blank">30a0283</a>
+</td>
+<td>
+AdamCSmithCWS
+</td>
+<td>
+2019-11-01
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><img src="figure/index.Rmd/unnamed-chunk-10-5.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-10-5">
+Past versions of unnamed-chunk-10-5.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-10-5" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/AdamCSmithCWS/BBSIndices/blob/30a0283777821133506d36a8302e69c82fe76eb5/docs/figure/index.Rmd/unnamed-chunk-10-5.png" target="_blank">30a0283</a>
+</td>
+<td>
+AdamCSmithCWS
+</td>
+<td>
+2019-11-01
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><img src="figure/index.Rmd/unnamed-chunk-10-6.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-10-6">
+Past versions of unnamed-chunk-10-6.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-10-6" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/AdamCSmithCWS/BBSIndices/blob/30a0283777821133506d36a8302e69c82fe76eb5/docs/figure/index.Rmd/unnamed-chunk-10-6.png" target="_blank">30a0283</a>
+</td>
+<td>
+AdamCSmithCWS
+</td>
+<td>
+2019-11-01
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><img src="figure/index.Rmd/unnamed-chunk-10-7.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-10-7">
+Past versions of unnamed-chunk-10-7.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-10-7" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/AdamCSmithCWS/BBSIndices/blob/30a0283777821133506d36a8302e69c82fe76eb5/docs/figure/index.Rmd/unnamed-chunk-10-7.png" target="_blank">30a0283</a>
+</td>
+<td>
+AdamCSmithCWS
+</td>
+<td>
+2019-11-01
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><img src="figure/index.Rmd/unnamed-chunk-10-8.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-10-8">
+Past versions of unnamed-chunk-10-8.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-10-8" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/AdamCSmithCWS/BBSIndices/blob/30a0283777821133506d36a8302e69c82fe76eb5/docs/figure/index.Rmd/unnamed-chunk-10-8.png" target="_blank">30a0283</a>
+</td>
+<td>
+AdamCSmithCWS
+</td>
+<td>
+2019-11-01
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><img src="figure/index.Rmd/unnamed-chunk-10-9.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-10-9">
+Past versions of unnamed-chunk-10-9.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-10-9" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/AdamCSmithCWS/BBSIndices/blob/30a0283777821133506d36a8302e69c82fe76eb5/docs/figure/index.Rmd/unnamed-chunk-10-9.png" target="_blank">30a0283</a>
+</td>
+<td>
+AdamCSmithCWS
+</td>
+<td>
+2019-11-01
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><img src="figure/index.Rmd/unnamed-chunk-10-10.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-10-10">
+Past versions of unnamed-chunk-10-10.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-10-10" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/AdamCSmithCWS/BBSIndices/blob/30a0283777821133506d36a8302e69c82fe76eb5/docs/figure/index.Rmd/unnamed-chunk-10-10.png" target="_blank">30a0283</a>
+</td>
+<td>
+AdamCSmithCWS
+</td>
+<td>
+2019-11-01
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><img src="figure/index.Rmd/unnamed-chunk-10-11.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-10-11">
+Past versions of unnamed-chunk-10-11.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-10-11" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/AdamCSmithCWS/BBSIndices/blob/30a0283777821133506d36a8302e69c82fe76eb5/docs/figure/index.Rmd/unnamed-chunk-10-11.png" target="_blank">30a0283</a>
+</td>
+<td>
+AdamCSmithCWS
+</td>
+<td>
+2019-11-01
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><img src="figure/index.Rmd/unnamed-chunk-10-12.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-10-12">
+Past versions of unnamed-chunk-10-12.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-10-12" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/AdamCSmithCWS/BBSIndices/blob/30a0283777821133506d36a8302e69c82fe76eb5/docs/figure/index.Rmd/unnamed-chunk-10-12.png" target="_blank">30a0283</a>
+</td>
+<td>
+AdamCSmithCWS
+</td>
+<td>
+2019-11-01
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><img src="figure/index.Rmd/unnamed-chunk-10-13.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-10-13">
+Past versions of unnamed-chunk-10-13.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-10-13" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/AdamCSmithCWS/BBSIndices/blob/30a0283777821133506d36a8302e69c82fe76eb5/docs/figure/index.Rmd/unnamed-chunk-10-13.png" target="_blank">30a0283</a>
+</td>
+<td>
+AdamCSmithCWS
+</td>
+<td>
+2019-11-01
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><img src="figure/index.Rmd/unnamed-chunk-10-14.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-10-14">
+Past versions of unnamed-chunk-10-14.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-10-14" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/AdamCSmithCWS/BBSIndices/blob/30a0283777821133506d36a8302e69c82fe76eb5/docs/figure/index.Rmd/unnamed-chunk-10-14.png" target="_blank">30a0283</a>
+</td>
+<td>
+AdamCSmithCWS
+</td>
+<td>
+2019-11-01
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><img src="figure/index.Rmd/unnamed-chunk-10-15.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-10-15">
+Past versions of unnamed-chunk-10-15.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-10-15" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/AdamCSmithCWS/BBSIndices/blob/30a0283777821133506d36a8302e69c82fe76eb5/docs/figure/index.Rmd/unnamed-chunk-10-15.png" target="_blank">30a0283</a>
+</td>
+<td>
+AdamCSmithCWS
+</td>
+<td>
+2019-11-01
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><img src="figure/index.Rmd/unnamed-chunk-10-16.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-10-16">
+Past versions of unnamed-chunk-10-16.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-10-16" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/AdamCSmithCWS/BBSIndices/blob/30a0283777821133506d36a8302e69c82fe76eb5/docs/figure/index.Rmd/unnamed-chunk-10-16.png" target="_blank">30a0283</a>
+</td>
+<td>
+AdamCSmithCWS
+</td>
+<td>
+2019-11-01
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><img src="figure/index.Rmd/unnamed-chunk-10-17.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-10-17">
+Past versions of unnamed-chunk-10-17.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-10-17" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/AdamCSmithCWS/BBSIndices/blob/30a0283777821133506d36a8302e69c82fe76eb5/docs/figure/index.Rmd/unnamed-chunk-10-17.png" target="_blank">30a0283</a>
+</td>
+<td>
+AdamCSmithCWS
+</td>
+<td>
+2019-11-01
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><img src="figure/index.Rmd/unnamed-chunk-10-18.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-10-18">
+Past versions of unnamed-chunk-10-18.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-10-18" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/AdamCSmithCWS/BBSIndices/blob/30a0283777821133506d36a8302e69c82fe76eb5/docs/figure/index.Rmd/unnamed-chunk-10-18.png" target="_blank">30a0283</a>
+</td>
+<td>
+AdamCSmithCWS
+</td>
+<td>
+2019-11-01
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><img src="figure/index.Rmd/unnamed-chunk-10-19.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-10-19">
+Past versions of unnamed-chunk-10-19.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-10-19" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/AdamCSmithCWS/BBSIndices/blob/30a0283777821133506d36a8302e69c82fe76eb5/docs/figure/index.Rmd/unnamed-chunk-10-19.png" target="_blank">30a0283</a>
+</td>
+<td>
+AdamCSmithCWS
+</td>
+<td>
+2019-11-01
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><img src="figure/index.Rmd/unnamed-chunk-10-20.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-10-20">
+Past versions of unnamed-chunk-10-20.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-10-20" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/AdamCSmithCWS/BBSIndices/blob/30a0283777821133506d36a8302e69c82fe76eb5/docs/figure/index.Rmd/unnamed-chunk-10-20.png" target="_blank">30a0283</a>
+</td>
+<td>
+AdamCSmithCWS
+</td>
+<td>
+2019-11-01
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><img src="figure/index.Rmd/unnamed-chunk-10-21.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-10-21">
+Past versions of unnamed-chunk-10-21.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-10-21" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/AdamCSmithCWS/BBSIndices/blob/30a0283777821133506d36a8302e69c82fe76eb5/docs/figure/index.Rmd/unnamed-chunk-10-21.png" target="_blank">30a0283</a>
+</td>
+<td>
+AdamCSmithCWS
+</td>
+<td>
+2019-11-01
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><img src="figure/index.Rmd/unnamed-chunk-10-22.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-10-22">
+Past versions of unnamed-chunk-10-22.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-10-22" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/AdamCSmithCWS/BBSIndices/blob/30a0283777821133506d36a8302e69c82fe76eb5/docs/figure/index.Rmd/unnamed-chunk-10-22.png" target="_blank">30a0283</a>
+</td>
+<td>
+AdamCSmithCWS
+</td>
+<td>
+2019-11-01
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><img src="figure/index.Rmd/unnamed-chunk-10-23.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-10-23">
+Past versions of unnamed-chunk-10-23.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-10-23" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/AdamCSmithCWS/BBSIndices/blob/30a0283777821133506d36a8302e69c82fe76eb5/docs/figure/index.Rmd/unnamed-chunk-10-23.png" target="_blank">30a0283</a>
+</td>
+<td>
+AdamCSmithCWS
+</td>
+<td>
+2019-11-01
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><img src="figure/index.Rmd/unnamed-chunk-10-24.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-10-24">
+Past versions of unnamed-chunk-10-24.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-10-24" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/AdamCSmithCWS/BBSIndices/blob/30a0283777821133506d36a8302e69c82fe76eb5/docs/figure/index.Rmd/unnamed-chunk-10-24.png" target="_blank">30a0283</a>
+</td>
+<td>
+AdamCSmithCWS
+</td>
+<td>
+2019-11-01
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><img src="figure/index.Rmd/unnamed-chunk-10-25.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-10-25">
+Past versions of unnamed-chunk-10-25.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-10-25" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/AdamCSmithCWS/BBSIndices/blob/30a0283777821133506d36a8302e69c82fe76eb5/docs/figure/index.Rmd/unnamed-chunk-10-25.png" target="_blank">30a0283</a>
+</td>
+<td>
+AdamCSmithCWS
+</td>
+<td>
+2019-11-01
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><img src="figure/index.Rmd/unnamed-chunk-10-26.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-10-26">
+Past versions of unnamed-chunk-10-26.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-10-26" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/AdamCSmithCWS/BBSIndices/blob/30a0283777821133506d36a8302e69c82fe76eb5/docs/figure/index.Rmd/unnamed-chunk-10-26.png" target="_blank">30a0283</a>
+</td>
+<td>
+AdamCSmithCWS
+</td>
+<td>
+2019-11-01
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><img src="figure/index.Rmd/unnamed-chunk-10-27.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-10-27">
+Past versions of unnamed-chunk-10-27.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-10-27" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/AdamCSmithCWS/BBSIndices/blob/30a0283777821133506d36a8302e69c82fe76eb5/docs/figure/index.Rmd/unnamed-chunk-10-27.png" target="_blank">30a0283</a>
+</td>
+<td>
+AdamCSmithCWS
+</td>
+<td>
+2019-11-01
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><img src="figure/index.Rmd/unnamed-chunk-10-28.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-10-28">
+Past versions of unnamed-chunk-10-28.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-10-28" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/AdamCSmithCWS/BBSIndices/blob/30a0283777821133506d36a8302e69c82fe76eb5/docs/figure/index.Rmd/unnamed-chunk-10-28.png" target="_blank">30a0283</a>
+</td>
+<td>
+AdamCSmithCWS
+</td>
+<td>
+2019-11-01
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><img src="figure/index.Rmd/unnamed-chunk-10-29.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-30.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-31.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-32.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-33.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-34.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-35.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-36.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-37.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-38.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-39.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-40.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-41.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-42.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-43.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-44.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-45.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-46.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-47.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-48.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-49.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-50.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-51.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-52.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-53.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-54.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-55.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-56.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-57.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-58.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-59.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-60.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-61.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-62.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-63.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-64.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-65.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-66.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-67.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-68.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-69.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-70.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-71.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-72.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-73.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-74.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-75.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-76.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-77.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-78.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-79.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-80.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-81.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-82.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-83.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-84.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-85.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-86.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-87.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-88.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-89.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-90.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-91.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-92.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-93.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-94.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-95.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-96.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-97.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-98.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-99.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-100.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-101.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-102.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-103.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-104.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-105.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-106.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-107.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-108.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-109.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-110.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-111.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-112.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-113.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-114.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-115.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-116.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-117.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-118.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-119.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-120.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-121.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-122.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-123.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-124.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-125.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-126.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-127.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-128.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-129.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-130.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-131.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-132.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-133.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-134.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-135.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-136.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-137.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-138.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-139.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-140.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-141.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-142.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-143.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-144.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-145.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-146.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-147.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-148.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-149.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-150.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-151.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-152.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-153.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-154.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-155.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-156.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-157.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-158.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-159.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-160.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-161.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-162.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-163.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-164.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-165.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-166.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-167.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-168.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-169.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-170.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-171.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-172.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-173.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-174.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-175.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-176.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-177.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-178.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-179.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-180.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-181.png" width="672" style="display: block; margin: auto;" /><img src="figure/index.Rmd/unnamed-chunk-10-182.png" width="672" style="display: block; margin: auto;" /></p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
