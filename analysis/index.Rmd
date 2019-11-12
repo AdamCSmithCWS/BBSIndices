@@ -100,7 +100,7 @@ h1 = ggplot(data = obs.mean, aes(observer_route_mean, group = model, fill = mode
 
 ## A2 overestimates precision
 As Bill described in his note, the A2 approach does appear to overestimate the precision of the annual indices. For example, if we look at the coefficient of variation for the annual indices, the CV of A2 is always smaller than the CV of A1
-```{r echo = F}
+```{r echo = F,fig.width=12}
 obssdobs <- obs.mean %>% 
   group_by(region) %>% 
   summarise(sd = sd(observer_route_mean))
@@ -195,9 +195,9 @@ difp = ggplot(data = compdif2,aes(y = dif_lindex_obs,x = sddif,group = model,col
   #geom_linerange(data = difdif,aes(x = sddif,ymax = A1,ymin = A2),inherit.aes = F)+
   labs(x = "sdobs - sd(obs[stratum,1:nobserver[stratum]])",
        y = "Difference between predicted and observed mean counts",
-       title = "A2 predicted values are closer to observed means")+
+       title = "A2 predicted values are closer to observed means")
   #geom_label_repel(data = difdif,aes(x = sddif,y = A1,label = Region),size = 1,inherit.aes = F)+
-  scale_y_continuous(limits = c(-3,3))
+  #scale_y_continuous(limits = c(-1,1))
 print(difp)
 
 ```
@@ -264,13 +264,14 @@ Given that the A2 approach:
 
 and, that the overestimate of precision in the indices from the A2 approach (which Bill L. demonstrated in his note from October 15) does not appear to translate into overestimates in the trend precision
 It seems to me that the A2 approach is preferable
-```{r echo = F}
+```{r echo = F,fig.width=12}
 
 tp = ggplot(data = t.strat,aes(x = Region,y = Trend,group = model, colour = model))+
   geom_pointrange(aes(ymin = Trend_Q0.025,ymax = Trend_Q0.975),position = position_dodge(0.5))+
   theme(axis.text.x = element_text(angle = 90))+
   labs(x = "",title = "Continental and stratum-level trends using A1 and A2 calculations for annual indices",
-       subtitle = "Continental trends vary by method but stratum-level trends are the same in magnitude and uncertainty")
+       subtitle = "Continental trends vary by method but stratum-level trends are the same in magnitude and uncertainty")+
+  scale_y_continuous(limits = c(-10,10))
   
 
 print(tp)
