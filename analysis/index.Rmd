@@ -307,7 +307,7 @@ dif.t2 = t.strat2 %>% group_by(Region) %>% summarise(difference = diff(Trend))
 dif.tci2 = t.strat2 %>% group_by(Region) %>% summarise(difference = diff(CIWidth_Trend))
 
 ```
-what we see is that the stratum level trends are effectively identical, both in their magnitude and in their uncertainty, but the continental estimates depend on the scaling (A1 vs A2). The continental trends vary because the relative magnitude of the annual indices in each stratum partly determine the stratum's contribution to the continental trend. If the annual indices are more severly overestimated in a stratum with a different trend value, then that increases the stratum's influence on the overall trend. For example, the continental trend from the A1 estimates is slightly less negative partly because of the much greater weight given to strata MT-11, CO-18, and ND-17 by the A1 calculation than is given by the A2 approach.
+what we see is that the stratum level trends are effectively identical, both in their magnitude and in their uncertainty, but the continental estimates depend on the scaling (A1 vs A2). The continental trends vary because the relative magnitude of the annual indices in each stratum partly determine the stratum's contribution to the continental trend. If the annual indices are more severly overestimated in a stratum with a different trend value, then that increases the stratum's influence on the overall trend. In these two cases, the differences are not extreme. They are often more extreme with the standard model.
 
 Given that the A2 approach:
 
@@ -358,23 +358,35 @@ By contrast, the continental trend estimates differ by `r signif((dif.t1[dif.t1$
 ```
 
 
-Below are the annual index plots for each stratum and method.
+
+
+
+
+# Below are the annual index plots for each stratum and method.
 Grey dots are the observed mean counts
 
-```{r message = F,fig.height = 4, fig.width = 7, echo = F, warning = F}
-for(i in 1:length(p11)){
-  print(p11[[i]])
-  print(p21[[i]])
+`r species2`
 
- }
+```{r message = F,fig.height = 4, fig.width = 9, echo = F, warning = F}
 for(i in 1:length(p12)){
   print(p12[[i]])
   print(p22[[i]])
 
  }
 
-#wflow_publish(c("analysis/index.Rmd"),
-#              "BBS Indices for Bill and John")
+```
+
+
+`r species1`
+
+```{r message = F,fig.height = 4, fig.width = 9, echo = F, warning = F}
+for(i in 1:length(p11)){
+  print(p11[[i]])
+  print(p21[[i]])
+
+ }
+
+#wflow_publish(c("analysis/index.Rmd"),"BBS Indices for Bill and John")
 #   ### render(input = "C:/Users/smithac/Documents/BBSIndices/analysis/index.rmd",pdf_document())
 
 ```
