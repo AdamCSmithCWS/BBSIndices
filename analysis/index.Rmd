@@ -19,8 +19,9 @@ A1 is the standard BBS approach, with n calculated following Sauer and Link 2011
 A2 is the approach I (Adam Smith) have been using lately, with n calculated as the mean of the expected counts from existing observer-route combinations. 
 
 ```{r echo = F, message = F, warning = F}
-#species = "Chestnut-collared Longspur"
-species = "Wood Thrush"
+species2 = "Chestnut-collared Longspur"
+#species = "Wood Thrush"
+species1 = "Barn Swallow"
 
 library(bbsBayes)
 library(tidyr)
@@ -28,28 +29,49 @@ library(ggplot2)
 library(ggforce)
 library(dplyr)
 library(ggrepel)
-load(paste0("data/",species," jags_models.RData"))
+load(paste0("data/",species1," jags_models.RData"))
+bbs_strat1 = bbs_strat
+jags_data1 = jags_data
+mod1 = mod
+rm("species")
+
+load(paste0("data/",species2," jags_models.RData"))
+bbs_strat2 = bbs_strat
+jags_data2 = jags_data
+mod2 = mod
+rm("species")
 
 
 ```
 
-I've run the standard BBS slope model on `r paste(species)` and calculated the annual indices using either A1 or A2. In this model the variance of the observer-route effects is a fixed effect estimated as a single value across the full survey (i.e., there is no parameter that estimates a stratum-specific observer-route variance).
+I've run the first difference BBS model on `r paste(species1)` and `r paste(species2)`, and then calculated the annual indices using both A1 and A2. In this version of the model the variance of the observer-route effects is a fixed effect estimated as a single value across the full survey (i.e., there is no parameter that estimates a stratum-specific observer-route variance).
 
 
 ## Continental Annual Index plots for each approach
 These plots of the annual indices show the estimated annual indices from each model along with the observed mean counts for each year. It is relatively easy to see that there's a difference in teh precision of the two estimates. But, importantly, there's also a difference in the overall magnitude of the estimates.
 ```{r cache=F, message = F, fig.height= 5, fig.width=7, echo = F,warning = F}
-cont.1 = generate_cont_indices(mod,alternate_n = "n2")
-cont.2 = generate_cont_indices(mod)
-plot_cont_indices(cont.1,species = "A1",add_observed_means = T)
-plot_cont_indices(cont.2,species = "A2",add_observed_means = T)
+cont.11 = generate_cont_indices(mod1,alternate_n = "n2")
+cont.21 = generate_cont_indices(mod1)
+plot_cont_indices(cont.11,species = paste("A1",species1),add_observed_means = T)
+plot_cont_indices(cont.21,species = paste("A2",species1),add_observed_means = T)
+
+cont.12 = generate_cont_indices(mod2,alternate_n = "n2")
+cont.22 = generate_cont_indices(mod2)
+plot_cont_indices(cont.12,species = paste("A1",species2),add_observed_means = T)
+plot_cont_indices(cont.22,species = paste("A2",species2),add_observed_means = T)
+
+strat.11 = generate_strata_indices(mod1,alternate_n = "n2")
+strat.21 = generate_strata_indices(mod1)
+
+p11 = plot_strata_indices(strat.11,species = paste("A1",species1),add_observed_means = T)
+p21 = plot_strata_indices(strat.21,species = paste("A2",species1),add_observed_means = T)
 
 
-strat.1 = generate_strata_indices(mod,alternate_n = "n2")
-strat.2 = generate_strata_indices(mod)
+strat.12 = generate_strata_indices(mod2,alternate_n = "n2")
+strat.22 = generate_strata_indices(mod2)
 
-p1 = plot_strata_indices(strat.1,species = "A1",add_observed_means = T)
-p2 = plot_strata_indices(strat.2,species = "A2",add_observed_means = T)
+p12 = plot_strata_indices(strat.12,species = paste("A1",species2),add_observed_means = T)
+p22 = plot_strata_indices(strat.22,species = paste("A2",species2),add_observed_means = T)
 
 
 
@@ -68,13 +90,13 @@ obsmean[,"model"] = modname
 return(obsmean)
 }
 
-obs.1.mean = extr.obs.means(mod,modname = "A1")
+obs.1.mean = extr.obs.means(mod1,modname = "A1")
 
 
-obs.2.mean = extr.obs.means(mod,modname = "A2")
+obs.2.mean = extr.obs.means(mod1,modname = "A2")
 
 obs.mean = rbind(obs.1.mean,obs.2.mean)
-obs.mean = merge(obs.mean,strat.1$area_weights,by.x = "strat", by.y = "num")
+obs.mean = merge(obs.mean,strat.11$area_weights,by.x = "strat", by.y = "num")
 
 
 
@@ -89,9 +111,9 @@ obs.mean = merge(obs.mean,strat.1$area_weights,by.x = "strat", by.y = "num")
 #   geom_qq(aes(sample = observer_route_mean))+
 #   facet_wrap(facets = ~region)
 
-h1 = ggplot(data = obs.mean, aes(observer_route_mean, group = model, fill = model))+
-  geom_freqpoly(bins = 10)+
-  facet_wrap(facets = ~region)
+# h1 = ggplot(data = obs.mean, aes(observer_route_mean, group = model, fill = model))+
+#   geom_freqpoly(bins = 10)+
+#   facet_wrap(facets = ~region)
 
 
 
@@ -99,18 +121,18 @@ h1 = ggplot(data = obs.mean, aes(observer_route_mean, group = model, fill = mode
 
 
 ## A2 overestimates precision
-As Bill described in his note, the A2 approach does appear to overestimate the precision of the annual indices. For example, if we look at the coefficient of variation for the annual indices, the CV of A2 is always smaller than the CV of A1
+As Bill described in his note, the A2 approach does appear to overestimate the precision of the annual indices. For example, if we look at the coefficient of variation for the annual indices for `r species1`, the CV of A2 is almost always smaller than the CV of A1, and the same is true for `r species2` although it's not shown here.
 ```{r echo = F,fig.width=12}
 obssdobs <- obs.mean %>% 
   group_by(region) %>% 
   summarise(sd = sd(observer_route_mean))
 
-sdobs = mod$summary["sdobs",]
+sdobs = mod1$summary["sdobs",]
 obssdobs$sddif = sdobs["mean"]-obssdobs$sd
 names(obssdobs)[1] = "Region"
 
-strat1 = strat.1$data_summary
-strat2 = strat.2$data_summary
+strat1 = strat.11$data_summary
+strat2 = strat.21$data_summary
 strat1$model = "A1"
 strat2$model = "A2"
 
@@ -134,7 +156,7 @@ cvp = ggplot(data = cvs,aes(x = Region,y = mcv,group = model, colour = model))+
   geom_point()+
   theme(axis.text.x = element_text(angle = 90))+
   labs(x = "",
-       y = "Coefficient of Variation of Indices (SE/mean)",title = "Coefficient of Variation (SE/mean) of the annual indices",
+       y = "Coefficient of Variation of Indices (SE/mean)",title = paste("Coefficient of Variation (SE/mean) of the annual indices for",species1),
        subtitle = "A2 estimates have a shorter CV than A1 estimates")+
   scale_y_continuous(limits = c(0,NA))
   
@@ -195,7 +217,7 @@ difp = ggplot(data = compdif2,aes(y = dif_lindex_obs,x = sddif,group = model,col
   #geom_linerange(data = difdif,aes(x = sddif,ymax = A1,ymin = A2),inherit.aes = F)+
   labs(x = "sdobs - sd(obs[stratum,1:nobserver[stratum]])",
        y = "Difference between predicted and observed mean counts",
-       title = "A2 predicted values are closer to observed means")
+       title = paste(species1,"A2 predicted values are closer to observed means"))
   #geom_label_repel(data = difdif,aes(x = sddif,y = A1,label = Region),size = 1,inherit.aes = F)+
   #scale_y_continuous(limits = c(-1,1))
 print(difp)
@@ -221,8 +243,8 @@ difp = ggplot(data = compdif,aes(y = mean_dif_log,x = sddif))+
   geom_point()+
   labs(x = "sdobs - sd(obs[stratum,1:nobserver[stratum]])",
        y = "Mean log-scale annual diff (mean(log(A1)-log(A2)))",
-       title = "Magnitude difference of annual indices by observer-route variance",
-       subtitle = "Little difference in strata where observer-route effects reflect the survey-wide pattern")
+       title = paste("Difference of annual index estimates by observer-route variance for",species1),
+       subtitle = "Little difference in strata where observer-route effects reflect the survey-wide pattern (i.e., at 0 on the x-axis)")
   #geom_label_repel(aes(label = Region))
 print(difp)
 
@@ -236,28 +258,54 @@ This difference between the stratum-level observer variance and the overall obse
 Finally, we can look at the differences in the trends estimated by each approach, both at a stratum level and at the continental scale
 
 ```{r echo=F}
-t.cont1 = generate_cont_trend(cont.1)
-t.cont2 = generate_cont_trend(cont.2)
-t.cont1$model = "A1"
-t.cont2$model = "A2"
-t.cont = rbind(t.cont1,t.cont2)
-t.cont$CIWidth_Trend = t.cont$Trend_Q0.95-t.cont$Trend_Q0.025
+t.cont11 = generate_cont_trend(cont.11)
+t.cont21 = generate_cont_trend(cont.21)
+t.cont11$model = "A1"
+t.cont21$model = "A2"
+t.cont1 = rbind(t.cont11,t.cont21)
+t.cont1$CIWidth_Trend = t.cont1$Trend_Q0.95-t.cont1$Trend_Q0.025
 
 
 
-t.strat1 = generate_strata_trends(strat.1)
-t.strat2 = generate_strata_trends(strat.2)
-t.strat1$model = "A1"
-t.strat2$model = "A2"
-t.strat = rbind(t.strat1,t.strat2)
-t.strat$CIWidth_Trend = t.strat$Trend_Q0.95-t.strat$Trend_Q0.025
+t.strat11 = generate_strata_trends(strat.11)
+t.strat21 = generate_strata_trends(strat.21)
+t.strat11$model = "A1"
+t.strat21$model = "A2"
+t.strat1 = rbind(t.strat11,t.strat21)
+t.strat1$CIWidth_Trend = t.strat1$Trend_Q0.95-t.strat1$Trend_Q0.025
 
-t.strat = rbind(t.cont,t.strat)
-t.strat$Region = factor(t.strat$Region,levels = unique(t.strat$Region),ordered = T)
+t.strat1 = rbind(t.cont1,t.strat1)
+t.strat1$Region = factor(t.strat1$Region,levels = unique(t.strat1$Region),ordered = T)
 
-dif.t = t.strat %>% group_by(Region) %>% summarise(difference = diff(Trend))
+dif.t1 = t.strat1 %>% group_by(Region) %>% summarise(difference = diff(Trend))
 
-dif.tci = t.strat %>% group_by(Region) %>% summarise(difference = diff(CIWidth_Trend))
+dif.tci1 = t.strat1 %>% group_by(Region) %>% summarise(difference = diff(CIWidth_Trend))
+
+#### species2
+
+t.cont12 = generate_cont_trend(cont.12)
+t.cont22 = generate_cont_trend(cont.22)
+t.cont12$model = "A1"
+t.cont22$model = "A2"
+t.cont2 = rbind(t.cont12,t.cont22)
+t.cont2$CIWidth_Trend = t.cont2$Trend_Q0.95-t.cont2$Trend_Q0.025
+
+
+
+t.strat12 = generate_strata_trends(strat.12)
+t.strat22 = generate_strata_trends(strat.22)
+t.strat12$model = "A1"
+t.strat22$model = "A2"
+t.strat2 = rbind(t.strat12,t.strat22)
+t.strat2$CIWidth_Trend = t.strat2$Trend_Q0.95-t.strat2$Trend_Q0.025
+
+t.strat2 = rbind(t.cont2,t.strat2)
+t.strat2$Region = factor(t.strat2$Region,levels = unique(t.strat2$Region),ordered = T)
+
+dif.t2 = t.strat2 %>% group_by(Region) %>% summarise(difference = diff(Trend))
+
+dif.tci2 = t.strat2 %>% group_by(Region) %>% summarise(difference = diff(CIWidth_Trend))
+
 ```
 what we see is that the stratum level trends are effectively identical, both in their magnitude and in their uncertainty, but the continental estimates depend on the scaling (A1 vs A2). The continental trends vary because the relative magnitude of the annual indices in each stratum partly determine the stratum's contribution to the continental trend. If the annual indices are more severly overestimated in a stratum with a different trend value, then that increases the stratum's influence on the overall trend. For example, the continental trend from the A1 estimates is slightly less negative partly because of the much greater weight given to strata MT-11, CO-18, and ND-17 by the A1 calculation than is given by the A2 approach.
 
@@ -270,26 +318,41 @@ and, that the overestimate of precision in the indices from the A2 approach (whi
 It seems to me that the A2 approach is preferable
 ```{r echo = F,fig.width=12}
 
-tp = ggplot(data = t.strat,aes(x = Region,y = Trend,group = model, colour = model))+
-  geom_pointrange(aes(ymin = Trend_Q0.025,ymax = Trend_Q0.975),position = position_dodge(0.5))+
+tp = ggplot(data = t.strat1,aes(x = Region,y = Trend,group = model, colour = model))+
+  geom_pointrange(aes(ymin = Trend_Q0.025,ymax = Trend_Q0.975),position = position_dodge(0.75))+
   theme(axis.text.x = element_text(angle = 90))+
-  labs(x = "",title = "Continental and stratum-level trends using A1 and A2 calculations for annual indices",
+  labs(x = "",title = paste(species1,"Continental and stratum-level trends using A1 and A2 calculations for annual indices"),
        subtitle = "Continental trends vary by method but stratum-level trends are the same in magnitude and uncertainty")+
   scale_y_continuous(limits = c(-5,5))
   
 
 print(tp)
 
-
-dift = ggplot(data = dif.t, aes(x = Region,y = difference))+
-  geom_point(alpha = 0.3)+
-  geom_point(data = dif.tci,aes(x = Region,y = difference),colour = "red",alpha = 0.3)+
+tp = ggplot(data = t.strat2,aes(x = Region,y = Trend,group = model, colour = model))+
+  geom_pointrange(aes(ymin = Trend_Q0.025,ymax = Trend_Q0.975),position = position_dodge(0.75))+
   theme(axis.text.x = element_text(angle = 90))+
-  labs(x = "",y = "Difference in trend estimates",title = "Difference in trends and CI-width of trends using A1 and A2 calculations for annual indices",
-       subtitle = "Continental trends vary by method but stratum-level trends are the same in magnitude and uncertainty")+
-  scale_y_continuous(limits = c(-0.03,0.03))
+  labs(x = "",title = paste(species2,"Continental and stratum-level trends using A1 and A2 calculations for annual indices"),
+       subtitle = "Continental trends vary by method but stratum-level trends are the same in magnitude and uncertainty"))
+  
 
-print(dift)
+print(tp)
+
+```
+
+The above plots are a bit crowded, but to summarize, the strata-based trends are identical (differences range from `r signif(min(dif.t1[dif.t1$Region != "Continental","difference"]),1)` to `r signif(max(dif.t1[dif.t1$Region != "Continental","difference"]),1)` for `r species1`, and from `r signif(min(dif.t2[dif.t2$Region != "Continental","difference"]),1)` to `r signif(max(dif.t2[dif.t2$Region != "Continental","difference"]),1)` for `r species2`, and the differences in the widths of the credible intervals range from `r signif(min(dif.tci1[dif.tci1$Region != "Continental","difference"]),1)` to `r signif(max(dif.tci1[dif.tci1$Region != "Continental","difference"]),1)`) for `r species1` and from `r signif(min(dif.tci2[dif.tci2$Region != "Continental","difference"]),1)` to `r signif(max(dif.tci2[dif.tci2$Region != "Continental","difference"]),1)`) for `r species2`.
+By contrast, the continental trend estimates differ by `r signif((dif.t1[dif.t1$Region == "Continental","difference"]),1)` %/year for `r species1` and by `r signif((dif.t2[dif.t2$Region == "Continental","difference"]),1)` %/year for `r species2`. The widths of the CIs differ by `r signif((dif.tci1[dif.tci1$Region == "Continental","difference"]),1)` %/year for `r species1` and by `r signif((dif.tci2[dif.tci2$Region == "Continental","difference"]),1)` %/year for `r species2`.  
+
+```{r echo = F,evaluate = F, fig.width=12}
+
+# dift = ggplot(data = dif.t, aes(x = Region,y = difference))+
+#   geom_point(alpha = 0.3)+
+#   geom_point(data = dif.tci,aes(x = Region,y = difference),colour = "red",alpha = 0.3)+
+#   theme(axis.text.x = element_text(angle = 90))+
+#   labs(x = "",y = "Difference in trend estimates",title = paste(species2,"Difference in trends and CI-width of trends using A1 and A2 calculations for annual indices"),
+#        subtitle = "Continental trends vary by method but stratum-level trends are the same in magnitude and uncertainty")+
+#   scale_y_continuous(limits = c(-0.03,0.03))
+
+#print(dift)
 
 ```
 
@@ -298,11 +361,11 @@ Below are the annual index plots for each stratum and method.
 Grey dots are the observed mean counts
 
 ```{r message = F,fig.height = 4, fig.width = 7, echo = F, warning = F}
-for(i in 1:length(p1)){
-  print(p1[[i]])
-  print(p2[[i]])
-  ### render(input = "C:/Users/smithac/Documents/BBSIndices/analysis/index.rmd",pdf_document())
-}
+# for(i in 1:length(p1)){
+#   print(p1[[i]])
+#   print(p2[[i]])
+#   ### render(input = "C:/Users/smithac/Documents/BBSIndices/analysis/index.rmd",pdf_document())
+# }
 
 ```
 
