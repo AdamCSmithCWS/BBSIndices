@@ -362,11 +362,20 @@ Below are the annual index plots for each stratum and method.
 Grey dots are the observed mean counts
 
 ```{r message = F,fig.height = 4, fig.width = 7, echo = F, warning = F}
-# for(i in 1:length(p1)){
-#   print(p1[[i]])
-#   print(p2[[i]])
+for(i in 1:length(p11)){
+  print(p11[[i]])
+  print(p21[[i]])
+
+ }
+for(i in 1:length(p12)){
+  print(p12[[i]])
+  print(p22[[i]])
+
+ }
+
+#wflow_publish(c("analysis/index.Rmd"),
+#              "BBS Indices for Bill and John")
 #   ### render(input = "C:/Users/smithac/Documents/BBSIndices/analysis/index.rmd",pdf_document())
-# }
 
 ```
 
