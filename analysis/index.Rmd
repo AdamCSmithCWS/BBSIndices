@@ -3,7 +3,7 @@ title: "The relative bias in alternative measures of BBS annual indices of abund
 site: workflowr::wflow_site
 output:
   workflowr::wflow_html:
-    toc: false
+    toc: TRUE
 editor_options:
   chunk_output_type: console
 ---
@@ -49,7 +49,7 @@ I've run the first difference BBS model on `r paste(species1)` and `r paste(spec
 
 ## Continental Annual Index plots for each approach
 These plots of the annual indices show the estimated annual indices from each model along with the observed mean counts for each year. It is relatively easy to see that there's a difference in teh precision of the two estimates. But, importantly, there's also a difference in the overall magnitude of the estimates.
-```{r cache=F, message = F, fig.height= 5, fig.width=7, echo = F,warning = F}
+```{r message = F, fig.height= 5, fig.width=7, echo = F,warning = F}
 cont.11 = generate_cont_indices(mod1,alternate_n = "n2")
 cont.21 = generate_cont_indices(mod1)
 plot_cont_indices(cont.11,species = paste("A1",species1),add_observed_means = T)
@@ -210,9 +210,9 @@ difdif = compdif2 %>%
 ```{r, fig.height= 5, fig.width=7,echo = F}
 difp = ggplot(data = compdif2,aes(y = dif_lindex_obs,x = sddif,group = model,colour = model))+
   geom_abline(slope = 0,intercept = 0,colour = grey(0.8),size = 2)+
-    geom_segment(data = difdif,aes(x = sddif,y = A1,xend = sddif,yend = A2),
-               colour = grey(0.5),inherit.aes = F,size = 1,
-               arrow = arrow(type = "closed",length = unit(0.02,"npc")))+
+    # geom_segment(data = difdif,aes(x = sddif,y = A1,xend = sddif,yend = A2),
+    #            colour = grey(0.5),inherit.aes = F,size = 1,
+    #            arrow = arrow(type = "closed",length = unit(0.02,"npc")))+
   geom_point(size = 2)+
   #geom_linerange(data = difdif,aes(x = sddif,ymax = A1,ymin = A2),inherit.aes = F)+
   labs(x = "sdobs - sd(obs[stratum,1:nobserver[stratum]])",
@@ -230,7 +230,7 @@ print(difp)
 
 The relationship between the overall observer-route variance (observer variance used in the 0.5*variance retransformation factor of approach A1), and the stratum-level variance of the observer-route effects (variance of the observer-route effects in a given stratum) partly explains why the magnitude of the two sets of estimates differ. The difference between the observed variance of observer-route effects in a given stratum (sd(obs[stratum,1:nobserver[stratum]])) and the overall sdobs provides a measure of how well the sdobs parameter represents the sd of the observer-route effects in a given stratum.
 
-As you see below, this measure of the difference between the two estimates of observer-route variance is correlated with the difference between the mean predicted annual index from each model (average of the annual differences between model predictions).
+As you see below, this measure of the difference between the two estimates of observer-route variance is strongly correlated with the difference between the mean predicted annual index from each model (average of the annual differences between model predictions). Note: there is little difference in strata where the standard deviation of observer-route effects reflects the survey-wide standard deviation (i.e., at 0 on the x-axis). 
 
 
 ```{r echo = F, fig.height= 5, fig.width=7}
@@ -243,14 +243,13 @@ difp = ggplot(data = compdif,aes(y = mean_dif_log,x = sddif))+
   geom_point()+
   labs(x = "sdobs - sd(obs[stratum,1:nobserver[stratum]])",
        y = "Mean log-scale annual diff (mean(log(A1)-log(A2)))",
-       title = paste("Difference of annual index estimates by observer-route variance for",species1),
-       subtitle = "Little difference in strata where observer-route effects reflect the survey-wide pattern (i.e., at 0 on the x-axis)")
+       title = paste("Difference of annual index estimates by observer-route variance for",species1))
   #geom_label_repel(aes(label = Region))
 print(difp)
 
 ```
 
-This difference between the stratum-level observer variance and the overall observer variance is one of the reasons I suggested letting the observer variance vary among strata. Taking that approach has very similar effects on the index estimates as does using the A2 approach. I've more recently been using the A2 approach with an overall observer variance because it improves convergence for species and regions where the data are particularly sparse (i.e., avoids some situations where there is very little information available to estimate the variance of observer-route effects in a given stratum).
+This difference between the stratum-level observer variance and the overall observer variance is one of the reasons I have suggested letting the observer variance vary among strata. Taking that approach has very similar effects on the index estimates as does using the A2 approach. I've more recently been using the A2 approach with an overall observer variance because it improves convergence for species and regions where the data are particularly sparse (i.e., avoids some situations where there is very little information available to estimate the variance of observer-route effects in a given stratum).
 
 ## Either way (A1 or A2), the stratum-level trends are the same, 
 ## However, the Continental trends are different!
@@ -387,7 +386,6 @@ for(i in 1:length(p11)){
  }
 
 #wflow_publish(c("analysis/index.Rmd"),"BBS Indices for Bill and John")
-#   ### render(input = "C:/Users/smithac/Documents/BBSIndices/analysis/index.rmd",pdf_document())
 
 ```
 
