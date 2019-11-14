@@ -333,7 +333,8 @@ tp = ggplot(data = t.strat2,aes(x = Region,y = Trend,group = model, colour = mod
   theme(axis.text.x = element_text(angle = 90))+
   labs(x = "",title = paste(species2,"Continental and stratum-level trends using A1 and A2 calculations for annual indices"),
        subtitle = "Continental trends vary by method but stratum-level trends are the same in magnitude and uncertainty")
-  
+
+
 
 print(tp)
 
